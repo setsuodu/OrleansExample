@@ -2,6 +2,7 @@
 using System.Linq;
 using GrainInterfaces;
 using kcp2k;
+using Tutorial;
 
 namespace Client
 {
@@ -20,8 +21,15 @@ namespace Client
         {
             Console.WriteLine($"Silo.OnReceivePacket，返回给Client:{context}");
 
+            var model = ProtobufferTool.Deserialize<TheMsg>(Packet.ToArray());
+            Console.WriteLine($"解析:{model.Name}说: {model.Content}");
+
+            TheMsg theMsg = new TheMsg { Name = "服务器", Content = "0x03, 0x04, Unreliable" };
+            byte[] bytes = ProtobufferTool.Serialize(theMsg);
+            ArraySegment<byte> data = new ArraySegment<byte>(bytes);
+
             int firstclient = context.connections.Count > 0 ? context.connections.First().Key : -1;
-            context.Send(firstclient, new ArraySegment<byte>(new byte[] { 0x03, 0x04 }), KcpChannel.Unreliable);
+            context.Send(firstclient, data, KcpChannel.Unreliable);
         }
     }
 }
