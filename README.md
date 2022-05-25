@@ -2,13 +2,6 @@
 
 # 1. HelloWorld
 
-|项目|依赖|类型|备注|
-|--|--|--|--|
-|Client| Microsoft.Orleans.Client| 控制台 | GateServer, 网关, 客户端，需要多开 |
-|Grains| Microsoft.Orleans.CodeGenerator.MSBuild（跨平台）,Microsoft.Oleans.Core.Abstractions | 类库 |实现 |
-|GrainInterface| Microsoft.Orleans.CodeGenerator.MSBuild, Microsoft.Oleans.Core.Abstractions | 类库 |接口 |
-|Silo| Microsoft.Orleans.Server | 控制台 |CardServer, 服务器，可以多开 |
-
 ### Add References
 
 1. `Grains` references `GrainInterfaces`.
