@@ -21,3 +21,8 @@
 | Grains           | `Microsoft.Orleans.CodeGenerator.MSBuild`   |
 | Grains           | `Microsoft.Orleans.Core.Abstractions`       |
 | Grains           | `Microsoft.Extensions.Logging.Abstractions` |
+
+# 2. Use Kcp
+
+1. 启动Console Silo，启动Console Client（GameServer）连接Silo。
+2. 启动Unity Client，连接服务器。
